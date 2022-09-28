@@ -30,8 +30,8 @@ class StudentControllerTest {
     @Test
     fun `should return all the students` () {
 
-        val student1= Student(111,"Aaaa A A","Class 7")
-        val student2=Student(222,"Bbbbb B B","Class 8")
+        val student1 = Student(111,"Aaaa A A","Class 7")
+        val student2 = Student(222,"Bbbbb B B","Class 8")
 
         val expectedResult= listOf(
             mapOf(
@@ -51,7 +51,7 @@ class StudentControllerTest {
         }returns Flux.just(student1, student2)
 
         val response=client.get()
-            .uri("/students/list")
+            .uri("/students/lists")
             .accept(MediaType.APPLICATION_JSON)
             .exchange() //invoking the end point
             .expectStatus().is2xxSuccessful
