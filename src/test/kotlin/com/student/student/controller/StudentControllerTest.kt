@@ -124,19 +124,18 @@ class StudentControllerTest {
 
     @Test
     fun `should be able to delete the user`() {
-        val exepectedResult = mapOf(
+        val expectedResult = mapOf(
             "studentId" to 999,
             "studentName" to "Rahul",
             "studentClass" to "Class 7")
 
         val student = Student(999, "Rahul","Class 7")
 
-
         every {
             studentService.deleteStudentById(999) }returns  Mono.empty()
 
         val response = client.delete()
-            .uri("/users/delete/999")
+            .uri("/students/delete/999")
             .exchange()
             .expectStatus().is2xxSuccessful
 
@@ -146,8 +145,8 @@ class StudentControllerTest {
     }
 
     @Test
-    fun `should return a single user`() {
-        val exepectedResult = mapOf(
+    fun `should return a single student`() {
+        val expectedResult = mapOf(
             "studentId" to 999,
             "studentName" to "Rahul",
             "studentClass" to "Class 7")
@@ -165,7 +164,7 @@ class StudentControllerTest {
             .expectStatus().is2xxSuccessful
             .returnResult<Any>().responseBody
 
-        response.blockFirst() shouldBe exepectedResult
+        response.blockFirst() shouldBe expectedResult
 
         verify(exactly = 1) {
             studentService.findStudentById(999)
