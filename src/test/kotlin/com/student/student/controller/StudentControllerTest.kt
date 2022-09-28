@@ -158,7 +158,7 @@ class StudentControllerTest {
         } returns Mono.just(student)
 
         val response = client.get()
-            .uri("/users/find/999")
+            .uri("/students/find/999")
             .accept(MediaType.APPLICATION_JSON)
             .exchange()
             .expectStatus().is2xxSuccessful
