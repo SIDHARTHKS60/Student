@@ -30,7 +30,7 @@ class StudentController
         return studentService.deleteStudentById(studentId)
     }
 
-    @PutMapping("update/{userId}")
+    @PutMapping("update/{studentId}")
     fun updateStudentById(@PathVariable("studentId") studentId: Int, @RequestBody student: Student): Mono<Student> {
         return studentService.updateStudent(studentId, student)
     }
